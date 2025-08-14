@@ -1,360 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TechZone - Computer Store</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        margin: 0;
-        background: #f5f8fb;
-        font-family: "Poppins", Arial, sans-serif;
-        color: #222;
-        font-size: 16px;
-        line-height: 1.5;
-      }
-      header {
-        background: #0f4c75;
-        color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      .navbar {
-        max-width: 1100px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 20px;
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-      .logo img {
-        height: 40px;
-        margin-right: 10px;
-      }
-      .logo h1 {
-        font-size: 1.5rem;
-        margin: 0;
-        font-weight: 700;
-      }
-      nav {
-        flex: 1;
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
-      }
-      nav ul li {
-        margin: 0 16px;
-      }
-      nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 6px 10px;
-        border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      nav ul li a:hover,
-      nav ul li a:focus {
-        background-color: #14b787;
-        color: white;
-      }
-      .hero {
-        background: linear-gradient(135deg, #bbe1fa, #f5f8fb);
-        text-align: center;
-        padding: 40px 15px;
-        opacity: 0;
-        animation: fadeIn 1.2s forwards;
-      }
-      .hero h2 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5em;
-        font-weight: 700;
-        color: #0f4c75;
-      }
-      section {
-        max-width: 1100px;
-        margin: auto;
-        padding: 30px 20px;
-      }
-      .products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1em;
-      }
-      .products article {
-        background: white;
-        border: 1px solid #dce3e8;
-        border-radius: 8px;
-        width: 190px;
-        text-align: center;
-        padding: 15px 10px;
-        font-size: 0.95em;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-        transition: box-shadow 0.3s ease, transform 0.3s ease;
-        transform: translateY(20px);
-        opacity: 0;
-        animation: fadeUp 1s forwards;
-      }
-      .products article:nth-child(1) {
-        animation-delay: 0.3s;
-      }
-      .products article:nth-child(2) {
-        animation-delay: 0.5s;
-      }
-      .products article:nth-child(3) {
-        animation-delay: 0.7s;
-      }
-      .products article:nth-child(4) {
-        animation-delay: 0.9s;
-      }
-      .products img {
-        max-width: 85%;
-        border-radius: 6px;
-        margin-bottom: 0.5em;
-        transition: transform 0.3s ease;
-      }
-      .products article:hover {
-        box-shadow: 0 6px 18px rgba(20, 183, 135, 0.4);
-        transform: translateY(0);
-      }
-      .products img:hover {
-        transform: scale(1.05);
-      }
-      .about,
-      .services {
-        background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        margin-top: 30px;
-        padding: 20px 20px;
-      }
-      .about h3,
-      .services h3,
-      .contact h3 {
-        text-align: center;
-        color: #0f4c75;
-        font-weight: 700;
-        margin-bottom: 0.7em;
-      }
-      .about p,
-      .services ul {
-        font-size: 1rem;
-        line-height: 1.7;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .services ul {
-        list-style: none;
-        padding: 0;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-      .services ul li {
-        margin: 8px 0;
-        padding-left: 22px;
-        background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Green_tick.svg/20px-Green_tick.svg.png")
-          no-repeat left center;
-        background-size: 16px;
-      }
-      aside {
-        background: #e0f7f4;
-        border-left: 6px solid #14b787;
-        margin: 30px auto;
-        max-width: 650px;
-        padding: 15px 20px;
-        border-radius: 8px;
-        text-align: center;
-        font-size: 0.9rem;
-        box-shadow: 0 2px 10px rgba(20, 183, 135, 0.1);
-      }
-      .contact {
-        background: #ffffff;
-        border-radius: 8px;
-        padding: 25px 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        margin-top: 30px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .contact form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-      .contact input,
-      .contact textarea {
-        padding: 10px;
-        border: 1px solid #cfd8dc;
-        border-radius: 5px;
-        font-size: 1rem;
-        resize: vertical;
-      }
-      .contact button {
-        padding: 12px;
-        background: #0f4c75;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      .contact button:hover,
-      .contact button:focus {
-        background: #14b787;
-      }
-      footer {
-        background: #0f4c75;
-        color: white;
-        text-align: center;
-        padding: 15px 10px;
-        margin-top: 40px;
-        font-size: 0.9rem;
-      }
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @media (max-width: 600px) {
-        .navbar {
-          flex-direction: column;
-          gap: 8px;
-        }
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 15px;
-        }
-        .products article {
-          width: 90%;
-          max-width: 320px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="navbar">
-        <div class="logo">
-          <img src="logo.jpg" alt="TechZone Logo" />
-          <h1>TechZone</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TechZone - Computer Store</title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet" />
+<style>
+body {
+  margin: 0;
+  background: #f5f8fb;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #222;
+  font-size: 16px;      /* Standard size */
+  line-height: 1.6;
+}
+header {
+  background: #0f4c75;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.navbar {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  margin-right: 12px;
+}
+.logo h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+nav {
+  flex: 1;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+nav ul li {
+  margin: 0 20px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.03rem;
+  padding: 7px 14px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+nav ul li a:hover {
+  background: #14b787;
+}
+.hero {
+  background: linear-gradient(135deg, #bbe1fa, #f5f8fb);
+  text-align: center;
+  padding: 48px 16px;
+}
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  color: #0f4c75;
+}
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 36px 24px;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.3em;
+}
+.products article {
+  background: white;
+  border: 1px solid #dce3e8;
+  border-radius: 10px;
+  width: 230px;
+  text-align: center;
+  padding: 20px 12px;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(20, 183, 135, 0.06);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.products article:hover {
+  box-shadow: 0 6px 18px rgba(20, 183, 135, 0.17);
+  transform: translateY(-4px) scale(1.02);
+}
+.products img {
+  max-width: 90%;
+  border-radius: 7px;
+  margin-bottom: 0.5em;
+  transition: transform 0.3s;
+}
+.products img:hover {
+  transform: scale(1.05);
+}
+.about, .services {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-top: 32px;
+  padding: 22px 22px;
+}
+.about h3, .services h3, .contact h3 {
+  text-align: center;
+  color: #0f4c75;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+.about p, .services ul {
+  font-size: 1.03em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.services ul {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.services ul li {
+  margin: 10px 0;
+  padding-left: 22px;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Green_tick.svg/20px-Green_tick.svg.png") no-repeat left center;
+  background-size: 16px;
+}
+aside {
+  background: #e0f7f4;
+  border-left: 6px solid #14b787;
+  margin: 32px auto 12px auto;
+  max-width: 650px;
+  padding: 16px 22px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.02em;
+  box-shadow: 0 2px 10px rgba(20, 183, 135, 0.09);
+}
+.contact {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-top: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact input, .contact textarea {
+  padding: 12px;
+  border: 1px solid #cfd8dc;
+  border-radius: 5px;
+  font-size: 1em;
+  resize: vertical;
+}
+.contact button {
+  padding: 13px;
+  background: #0f4c75;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.contact button:hover, .contact button:focus {
+  background: #14b787;
+}
+footer {
+  background: #0f4c75;
+  color: white;
+  text-align: center;
+  padding: 17px 10px;
+  margin-top: 44px;
+  font-size: 0.98rem;
+}
+@media (max-width: 600px) {
+  .navbar { flex-direction: column; gap: 10px;}
+  nav ul { flex-wrap: wrap; justify-content: center; gap: 12px;}
+  .products article { width: 97%; max-width: 340px;}
+  .about, .services, .contact, aside { padding: 17px 8px;}
+}
+</style>
+</head>
+<body>
 
-    <div class="hero">
-      <h2>Affordable Computers & Accessories</h2>
-      <p>Find the latest laptops, gadgets, and expert tech support.</p>
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo.jpg" alt="TechZone Logo" />
+      <h1>TechZone</h1>
     </div>
-
-    <section class="products">
-      <article>
-        <img
-          src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
-          alt="Laptop"
-        />
-        <h3>ProBook X1</h3>
-        <p>Sleek laptop for students & professionals.</p>
-        <strong>₹55,000</strong>
-      </article>
-      <article>
-        <img
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
-          alt="Keyboard"
-        />
-        <h3>Gaming Keyboard</h3>
-        <p>Colorful backlit keys for gamers.</p>
-        <strong>₹2,400</strong>
-      </article>
-      <article>
-        <img
-          src="https://m.media-amazon.com/images/I/61LhfQRdEgL.jpg"
-          alt="Headphones"
-        />
-        <h3>Wireless Headphones</h3>
-        <p>Great sound and battery life.</p>
-        <strong>₹3,200</strong>
-      </article>
-      <article>
-        <img
-          src="https://simmtronics.co.in/wp-content/uploads/2022/12/256GB-M.2-Sata-Solid-State-Drive-%E2%80%93-SSD-S950P-2.webp"
-          alt="SSD Drive"
-        />
-        <h3>SSD 1TB</h3>
-        <p>Superfast, reliable external drive.</p>
-        <strong>₹7,900</strong>
-      </article>
-    </section>
-
-    <section class="about">
-      <h3>About Us</h3>
-      <p>
-        TechZone is your trusted store for computers, gadgets, and repair
-        services. We pride ourselves on delivering quality products at honest
-        prices with excellent after-sales support.
-      </p>
-    </section>
-
-    <section class="services">
-      <h3>Our Services</h3>
+    <nav>
       <ul>
-        <li>Custom PC Builds</li>
-        <li>Hardware Repairs & Upgrades</li>
-        <li>Software Installation</li>
-        <li>Data Recovery</li>
-        <li>On-site Tech Support</li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
-    </section>
+    </nav>
+  </div>
+</header>
 
-    <aside>
-      <h4>⭐ Special Offer! ⭐</h4>
-      <p>
-        10% off all accessories this week! Use code <strong>TECH10</strong> at
-        checkout.
-      </p>
-    </aside>
+<div class="hero">
+  <h2>Affordable Computers & Accessories</h2>
+  <p>Find the latest laptops, gadgets, and expert tech support.</p>
+</div>
 
-    <section class="contact">
-      <h3>Contact Us</h3>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+<section class="products">
+  <article>
+    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" alt="Laptop" />
+    <h3>ProBook X1</h3>
+    <p>Sleek laptop for students & professionals.</p>
+    <strong>₹55,000</strong>
+  </article>
+  <article>
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Keyboard" />
+    <h3>Gaming Keyboard</h3>
+    <p>Colorful backlit keys for gamers.</p>
+    <strong>₹2,400</strong>
+  </article>
+  <article>
+    <img src="https://m.media-amazon.com/images/I/61LhfQRdEgL.jpg" alt="Headphones" />
+    <h3>Wireless Headphones</h3>
+    <p>Great sound and battery life.</p>
+    <strong>₹3,200</strong>
+  </article>
+  <article>
+    <img src="https://simmtronics.co.in/wp-content/uploads/2022/12/256GB-M.2-Sata-Solid-State-Drive-%E2%80%93-SSD-S950P-2.webp" alt="SSD Drive" />
+    <h3>SSD 1TB</h3>
+    <p>Superfast, reliable external drive.</p>
+    <strong>₹7,900</strong>
+  </article>
+</section>
 
-    <footer>&copy; 2025 TechZone | Creator: VD</footer>
-  </body>
+<section class="about">
+  <h3>About Us</h3>
+  <p>
+    TechZone is your trusted store for computers, gadgets, and repair services. We pride ourselves on delivering quality products at honest prices with excellent after-sales support.
+  </p>
+</section>
+
+<section class="services">
+  <h3>Our Services</h3>
+  <ul>
+    <li>Custom PC Builds</li>
+    <li>Hardware Repairs & Upgrades</li>
+    <li>Software Installation</li>
+    <li>Data Recovery</li>
+    <li>On-site Tech Support</li>
+  </ul>
+</section>
+
+<aside>
+  <h4>⭐ Special Offer! ⭐</h4>
+  <p>10% off all accessories this week! Use code <strong>TECH10</strong> at checkout.</p>
+</aside>
+
+<section class="contact">
+  <h3>Contact Us</h3>
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="4" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 TechZone | Creator: VD
+</footer>
+
+</body>
 </html>
